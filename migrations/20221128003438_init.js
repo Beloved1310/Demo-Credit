@@ -10,8 +10,7 @@ exports.up = function(knex) {
         table.string("password", 255).notNullable();
         table.integer("account", 9).notNullable().defaultTo(0);
         table.integer("wallet").notNullable().defaultTo(0);
-        // table.string("account", 9).notNullable();
-        // table.string("country", 2).defaultTo("NG");
+        // table.string("currency", 2).defaultTo("Naira");
         table.timestamps(true, true);
       });
 };
