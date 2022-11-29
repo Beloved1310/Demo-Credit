@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { knex } = require("../../db/db");
+const {KnexService} = require('../../services/query')
 const { JWT } = require("../../config");
 const loginValidate = require("../../validation/loginValidate");
 
@@ -8,7 +8,8 @@ module.exports = async (req, res) => {
   const { value, error } = loginValidate(req.body);
   if (error) return res.status(400).send({ error: error.details[0].message });
   const { email, password } = value;
-  const user = await knex("users").select("*").where("email", email).limit(1);
+  
+  const user = await await KnexService.findUser(email);
   if (!user.length)
     return res.status(400).send({ error: "username or password not found" });
 
