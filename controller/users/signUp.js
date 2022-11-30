@@ -12,7 +12,8 @@ const existedUser =   await KnexService.findUser(value.email)
   value.password = await bcrypt.hash(value.password, salt);
   value.account = Math.floor(Math.random() * 1000000000);
 
-  await KnexService.insertUser(value)
+ await KnexService.insertUser(value)
+ 
 
   const data = { name: value.name, value: value.email };
   return res.send({

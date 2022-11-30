@@ -2,7 +2,7 @@
 
 const express = require('express');
 const asyncMiddleware = require('../middleware/async');
-const auth = require('../middleware/auth');
+const { authJWT } = require('../middleware/auth');
 
 
 const router = express.Router();
@@ -17,9 +17,9 @@ const withdrawfunds = require('../controller/withdrawfunds');
 
 router.post('/signup', asyncMiddleware(signUp));
 router.post('/login', asyncMiddleware(loginUser));
-router.post('/fund', auth, asyncMiddleware(fundUser));
-router.post('/fundaccount', auth, asyncMiddleware(fundAccount));
-router.post('/withdrawal', auth, asyncMiddleware(withdrawfunds));
+router.post('/fund', authJWT, asyncMiddleware(fundUser));
+router.post('/fundaccount', authJWT, asyncMiddleware(fundAccount));
+router.post('/withdrawal', authJWT, asyncMiddleware(withdrawfunds));
 
 
 

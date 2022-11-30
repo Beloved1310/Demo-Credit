@@ -1,14 +1,22 @@
 /* eslint consistent-return: "off" */
 
-const jwt = require('jsonwebtoken');
-const { JWT } = require('../config');
+const jwt = require("jsonwebtoken");
+const { JWT } = require("../config");
 
-module.exports = (req, res, next) => {
-  const token = req.header('x-auth-token');
+const signJWT = (email) => {
+  return jwt.sign(
+    {
+      email,
+    },
+    JWT
+  );
+};
+const authJWT = (req, res, next) => {
+  const token = req.header("x-auth-token");
   if (!token) {
     return res
       .status(401)
-      .send({ message: 'Access denied. No token provided' });
+      .send({ message: "Access denied. No token provided" });
   }
 
   try {
@@ -16,6 +24,7 @@ module.exports = (req, res, next) => {
     req.user = decoded;
     next();
   } catch (ex) {
-    res.status(400).send({ message: 'Invalid token.' });
+    res.status(400).send({ message: "Invalid token." });
   }
 };
+module.exports = {signJWT,authJWT}

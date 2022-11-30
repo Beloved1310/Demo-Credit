@@ -15,18 +15,19 @@ module.exports = async (req, res) => {
 
   if (!existedAccount.length)
     return res.status(400).send({ error: "Invalid Account" });
-  const debitAccount = await KnexService.isExist(
+  const debitWallet = await KnexService.isExist(
     "email",
     req.user.email,
     "wallet"
   );
-  if (!debitAccount.length) {
+
+  if (!debitWallet.length) {
     return res.status(400).send({ message: "Invalid wallet address" });
   }
-  if (debitAccount[0] < amount)
+  if (debitWallet[0] < amount)
     return res
       .status(424)
-      .send({ message: "Insuffient Fund to complete this transfer" });
+      .send({ error: "Insuffient Fund to complete this transfer" });
   await KnexService.decrementWallet(req.user.email);
 
   await KnexService.incrementWallet(
@@ -37,14 +38,18 @@ module.exports = async (req, res) => {
   );
 
   // const transactionHistory = {
-  //   previousAmount:
-  //   currentAmount:
-  //   currency:
+
+  //   previousAmount: debitWallet[0],
+  //   currentAmount:debitWallet[0] - amount,
   //   Date: date.now()
   // }
 
+  // await KnexService.insertUser(transactionHistory)
+
   return res.send({
     message: `User account - ${accountNumber} is funded with ${amount} naira`,
-    // data,
+    data: {
+      currentAccount : debitWallet[0] - amount
+    },
   });
 };
