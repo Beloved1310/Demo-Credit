@@ -1,20 +1,6 @@
-const express = require('express');
-const cors = require('cors');
-require('dotenv').config();
 const debug = require('debug')('app');
 const { PORT } = require('./config');
-
-const app = express();
-// require('./db/db')();
-
-const user = require('./route/user');
-
-app.use(cors({ origin: '*' }));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-
-app.use('/', user);
+const app = require('./app')
 
 
 app.listen(PORT, () => {

@@ -1,7 +1,6 @@
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 const {KnexService} = require('../../services/query')
-const { JWT } = require("../../config");
+const {signJWT} = require("../../middleware/auth")
 const loginValidate = require("../../validation/loginValidate");
 
 module.exports = async (req, res) => {
@@ -16,13 +15,7 @@ module.exports = async (req, res) => {
   const validPassword = await bcrypt.compare(password, user[0].password);
   if (!validPassword)
     return res.status(400).send({ error: "username or password not found " });
-
-  const token = jwt.sign(
-    {
-      email,
-    },
-    JWT
-  );
+  const token = signJWT(email)
   res.header("x-auth-token", token);
   const data = { email, token };
   return res.send({ message: "Login Successful", data });
