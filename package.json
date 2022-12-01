@@ -6,8 +6,8 @@
   "scripts": {
     "test": "jest",
     "migrate": "npx knex migrate:latest --knexfile ./db/knexfile.js",
-    "dev": "nodemon index.js",
-    "start": "node index.js"
+    "dev": "knex migrate:latest && nodemon index.js",
+    "start": "knex migrate:latest && node index.js"
   },
   "repository": {
     "type": "git",
