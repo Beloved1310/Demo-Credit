@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
 const {KnexService} = require('../../services/query')
-const signUpValidate = require("../../validation/signupValidation");
+const signUpValidate = require("../../validation/signUpValidation");
 
 module.exports = async (req, res) => {
   const { value, error } = signUpValidate(req.body);
