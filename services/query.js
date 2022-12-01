@@ -10,8 +10,8 @@ const KnexService = {
     return existedUser;
   },
 
-  insertUser: (value) => {
-    const newUser = knex("users").insert(value);
+  insert: (key,value) => {
+    const newUser = knex(key).insert(value);
     return newUser;
   },
 

@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const { signJWT } = require("../middleware/auth");
 const { KnexService } = require("../services/query");
 
-const jwt = signJWT("egebe@gmail.com");
+const jwt = signJWT(1, "egebe@gmail.com");
 
 const amountValue = {
   amount: 5000,
@@ -15,11 +15,6 @@ describe("User account with wallet funtionality ", () => {
     process.env.NODE_ENV = "test";
   });
 
-  // afterEach(async () => {
-  //   const db = KnexService;
-  //   await db.close();
-  //   // (await db.configClient).close();
-  // });
   describe("POST /signup", () => {
     it("should respond user already registered", async () => {
       jest.spyOn(KnexService, "findUser").mockImplementation(() => {
@@ -45,7 +40,7 @@ describe("User account with wallet funtionality ", () => {
         });
       });
 
-      jest.spyOn(KnexService, "insertUser").mockImplementation(() => {
+      jest.spyOn(KnexService, "insert").mockImplementation(() => {
         return new Promise((resolve) => {
           resolve([5]);
         });
@@ -139,9 +134,14 @@ describe("User account with wallet funtionality ", () => {
     });
 
     it("should respond your account is successfully funded", async () => {
+      jest.spyOn(KnexService, "isExist").mockImplementation(() => {
+        return new Promise((resolve) => {
+          resolve([33]);
+        });
+      });
       jest.spyOn(KnexService, "incrementWallet").mockImplementation(() => {
         return new Promise((resolve) => {
-          resolve([1]);
+          resolve(1);
         });
       });
       const { statusCode, body } = await request(app)
@@ -205,7 +205,7 @@ describe("User account with wallet funtionality ", () => {
       });
     });
 
-    it("should respond Insuffient Fund to complete this transfer", async () => {
+    it("should respond User account - 255784983 is funded with 1 naira", async () => {
       jest.spyOn(KnexService, "isExist").mockImplementation(() => {
         return new Promise((resolve) => {
           resolve([255784983]);
@@ -214,7 +214,7 @@ describe("User account with wallet funtionality ", () => {
 
       jest.spyOn(KnexService, "isExist").mockImplementation(() => {
         return new Promise((resolve) => {
-          resolve([50]);
+          resolve([500]);
         });
       });
 
