@@ -11,7 +11,6 @@ module.exports = async (req, res) => {
     value.accountNumber,
     "account"
   );
- 
 
   if (!existedAccount.length)
     return res.status(400).send({ error: "Invalid Account" });
@@ -37,19 +36,18 @@ module.exports = async (req, res) => {
     value.amount
   );
 
-  // const transactionHistory = {
+  const transactionHistory = {
+    previousAmount: debitWallet[0],
+    currentAmount: debitWallet[0] - amount,
+    userid: req.user.id,
+  };
 
-  //   previousAmount: debitWallet[0],
-  //   currentAmount:debitWallet[0] - amount,
-  //   Date: date.now()
-  // }
-
-  // await KnexService.insertUser(transactionHistory)
+  await KnexService.insert("transactionHistory", transactionHistory);
 
   return res.send({
     message: `User account - ${accountNumber} is funded with ${amount} naira`,
     data: {
-      currentAccount : debitWallet[0] - amount
+      currentAccount: debitWallet[0] - amount,
     },
   });
 };

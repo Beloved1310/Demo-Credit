@@ -15,7 +15,7 @@ module.exports = async (req, res) => {
   const validPassword = await bcrypt.compare(password, user[0].password);
   if (!validPassword)
     return res.status(400).send({ error: "username or password not found " });
-  const token = signJWT(email)
+  const token = signJWT(user[0].id, email)
   res.header("x-auth-token", token);
   const data = { email, token };
   return res.send({ message: "Login Successful", data });

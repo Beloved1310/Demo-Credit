@@ -3,9 +3,10 @@
 const jwt = require("jsonwebtoken");
 const { JWT } = require("../config");
 
-const signJWT = (email) => {
+const signJWT = (id, email) => {
   return jwt.sign(
     {
+      id,
       email,
     },
     JWT
@@ -27,4 +28,4 @@ const authJWT = (req, res, next) => {
     res.status(400).send({ message: "Invalid token." });
   }
 };
-module.exports = {signJWT,authJWT}
+module.exports = { signJWT, authJWT };
