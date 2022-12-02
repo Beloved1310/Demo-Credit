@@ -25,7 +25,6 @@ This Project is an Application Programming Interface for a mobile lending app th
   > or download to your local desktop.
 
 - Open the code using any code editor.
-- **Include a csv file to the current directory, name "transaction.cv"**
 
 - On terminal
 
@@ -46,7 +45,7 @@ The Project live deployment is "http://18.208.182.28:8000/". Use the documentati
 ![Algorithm schema](./dbpng.png)
 The image above shows the table Schema in KnexJs Js, The user `id ` is unique and incremented with a reference when saving a transaction history for wallet functionality in the transaction history `userid` field. 
 
-For the  User Creation **post**  request - the fields 
+For the  User Creation **POST**  request - the fields 
    > name
    > email
    > password
