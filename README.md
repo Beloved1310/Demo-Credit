@@ -39,7 +39,7 @@ The Project is well documented on Postman. The Publication link is [Demo-Credit 
 
 # Deployment
 
-The Project live deployment is [github respository link](https://adefisayo-adejumo-lendsqr-be-test.vercel.app). Use the documentation to know the routes for easy navigation.
+The Project live deployment is [deployment link](https://adefisayo-adejumo-lendsqr-be-test.vercel.app). Use the documentation to know the routes for easy navigation.
 
 # Features
  ### Schema Illustration
