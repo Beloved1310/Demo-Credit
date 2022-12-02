@@ -7,7 +7,7 @@ exports.up = function(knex) {
         table.increments("id").primary();
         table.varchar("name", 255).notNullable();
         table.varchar("email", 255).notNullable().unique();
-        table.varchar("password", 8).notNullable();
+        table.varchar("password").notNullable();
         table.integer("account", 9).notNullable().defaultTo(0);
         table.integer("wallet").notNullable().defaultTo(0);
         table.string("currency").defaultTo("Naira");
