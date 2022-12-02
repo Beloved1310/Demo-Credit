@@ -12,9 +12,7 @@ const fundUser = require("../controller/fundWallet");
 const fundAccount = require("../controller/fundAnotherAccount");
 const withdrawfunds = require("../controller/withdrawfunds");
 
-router.get('/', (req, res)=>{
-    return res.send("OK")
-});
+router.get('/', (req, res)=>{ return res.send("OK")});
 
 
 router.post("/signup", asyncMiddleware(signUp));
