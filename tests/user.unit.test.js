@@ -160,7 +160,7 @@ describe("User account with wallet funtionality ", () => {
   });
 
   describe("POST /fundaccount", () => {
-    it("should respond ainvalid accont", async () => {
+    it("should respond an invalid accont", async () => {
       jest.spyOn(KnexService, "isExist").mockImplementation(() => {
         return new Promise((resolve) => {
           resolve("");

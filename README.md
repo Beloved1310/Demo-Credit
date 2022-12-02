@@ -32,6 +32,7 @@ This Project is an Application Programming Interface for a mobile lending app th
 $ npm install
 ```
 
+- Provide the environment variables as specify in the `config.js` file
 # Documentation
 
 The Project is well documented on Postman. The Publication link is [Demo-Credit Postman link](https://documenter.getpostman.com/view/15034996/2s8Yt1spxw)

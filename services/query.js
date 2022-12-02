@@ -10,7 +10,7 @@ const KnexService = {
     return existedUser;
   },
 
-  insert: (key,value) => {
+  insert: (key, value) => {
     const newUser = knex(key).insert(value);
     return newUser;
   },
@@ -19,7 +19,7 @@ const KnexService = {
     const addWallet = knex("users")
       .where(key, value)
       .limit(1)
-      .increment(incrementKey, incrementValue)
+      .increment(incrementKey, incrementValue);
     return addWallet;
   },
 
