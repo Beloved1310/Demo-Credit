@@ -1,6 +1,6 @@
 const request = require("supertest");
-const app = require("../app");
 const bcrypt = require("bcrypt");
+const app = require("../app");
 const { signJWT } = require("../middleware/auth");
 const { KnexService } = require("../services/query");
 

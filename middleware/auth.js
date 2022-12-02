@@ -4,13 +4,14 @@ const jwt = require("jsonwebtoken");
 const { JWT } = require("../config");
 
 const signJWT = (id, email) => {
-  return jwt.sign(
+  const jwtSignature = jwt.sign(
     {
       id,
       email,
     },
     JWT
   );
+  return jwtSignature;
 };
 const authJWT = (req, res, next) => {
   const token = req.header("x-auth-token");

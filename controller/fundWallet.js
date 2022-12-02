@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
     "wallet"
   );
 
-  const x = await KnexService.incrementWallet(
+   await KnexService.incrementWallet(
     "email",
     req.user.email,
     "wallet",
