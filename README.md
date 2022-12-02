@@ -39,11 +39,11 @@ The Project is well documented on Postman. The Publication link is [Demo-Credit 
 
 # Deployment
 
-The Project live deployment is [github respository link](http://18.208.182.28:8000/). Use the documentation to know the routes for easy navigation.
+The Project live deployment is [github respository link](https://adefisayo-adejumo-lendsqr-be-test.vercel.app). Use the documentation to know the routes for easy navigation.
 
 # Features
  ### Schema Illustration
-![Algorithm schema](./dbpng.png)
+![Algorithm schema](./db.png)
 The image above shows the table Schema in KnexJs Js, The user `id ` is unique and incremented with a reference when saving a transaction history for wallet functionality in the transaction history `userid` field. 
 
 For the  User Creation **POST**  request - the fields 
@@ -62,7 +62,7 @@ CREATE TABLE `users` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`name` varchar(255) NOT NULL,
 	`email` varchar(255) NOT NULL,
-	`password` varchar(8) NOT NULL,
+	`password` varchar(255) NOT NULL,
 	`account` INT(9) NOT NULL,
 	`wallet` INT NOT NULL,
 	`currency` VARCHAR(255) NOT NULL,
@@ -82,9 +82,6 @@ CREATE TABLE `transactionHistory` (
 );
 
 ALTER TABLE `transactionHistory` ADD CONSTRAINT `transactionHistory_fk0` FOREIGN KEY (`userid`) REFERENCES `users`(`id`);
-
-
-
 
 ```
 # Built-With
