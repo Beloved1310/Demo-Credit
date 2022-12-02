@@ -34,11 +34,11 @@ $ npm install
 
 # Documentation
 
-The Project is well documented on Postman. The Publication link is "https://documenter.getpostman.com/view/15034996/2s8Yt1spxw"
+The Project is well documented on Postman. The Publication link is [Demo-Credit Postman link](https://documenter.getpostman.com/view/15034996/2s8Yt1spxw)
 
 # Deployment
 
-The Project live deployment is "http://18.208.182.28:8000/". Use the documentation to know the routes for easy navigation.
+The Project live deployment is [github respository link](http://18.208.182.28:8000/). Use the documentation to know the routes for easy navigation.
 
 # Features
  ### Schema Illustration
